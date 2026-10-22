@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ProjectFlow | Team Workspace</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="topbar"><a class="brand" href="#">Project<span>Flow</span></a><div id="userArea"><span class="muted">Team workspace</span></div></header>
+<main class="layout">
+  <aside class="sidebar"><p class="eyebrow">WORKSPACE</p><h2>Your projects</h2><div id="projectList" class="project-list"></div><button id="newProjectBtn" class="primary full">＋ New project</button><div class="side-note">Plan together.<br><b>Make progress visible.</b></div></aside>
+  <section class="content">
+    <section id="authPanel" class="panel auth-panel"><p class="eyebrow">WELCOME TO PROJECTFLOW</p><h1>Your team’s work, in one place.</h1><p class="muted">Create projects, organize tasks, and share updates.</p><div class="auth-grid"><form id="loginForm"><h3>Log in</h3><input name="username" placeholder="Username" required><input name="password" type="password" placeholder="Password" required><button class="primary">Log in</button></form><form id="registerForm"><h3>Create account</h3><input name="username" placeholder="Username (3+ chars)" required><input name="password" type="password" placeholder="Password (6+ chars)" required><button class="secondary">Register</button></form></div><p id="authMessage" class="message"></p></section>
+    <section id="workspace" hidden><div class="welcome-row"><div><p class="eyebrow">PROJECT OVERVIEW</p><h1 id="projectTitle">Select a project</h1><p id="projectDescription" class="muted"></p></div><button id="inviteBtn" class="secondary">＋ Invite member</button></div>
+      <div class="stats"><div class="stat"><span>All tasks</span><b id="allCount">0</b></div><div class="stat"><span>In progress</span><b id="progressCount">0</b></div><div class="stat"><span>Completed</span><b id="doneCount">0</b></div></div>
+      <form id="taskForm" class="new-task panel"><h3>Add a task</h3><div class="task-inputs"><input name="title" placeholder="What needs to get done?" required><select name="priority"><option>Normal</option><option>High</option><option>Low</option></select><input name="due_date" type="date"><button class="primary">Add task</button></div><input name="description" placeholder="Optional details"></form>
+      <div class="board"><div class="column"><h3><i class="dot todo"></i> To do <span id="todoCount">0</span></h3><div id="todoTasks" class="task-list"></div></div><div class="column"><h3><i class="dot progress"></i> In progress <span id="doingCount">0</span></h3><div id="doingTasks" class="task-list"></div></div><div class="column"><h3><i class="dot done"></i> Done <span id="doneColumnCount">0</span></h3><div id="doneTasks" class="task-list"></div></div></div><p id="workspaceMessage" class="message"></p>
+    </section>
+  </section>
+</main>
+<dialog id="projectDialog"><form id="projectForm" method="dialog"><h2>Create a project</h2><input name="name" placeholder="Project name" required><textarea name="description" placeholder="What is this project about?"></textarea><div class="dialog-actions"><button type="button" class="secondary" onclick="document.querySelector('#projectDialog').close()">Cancel</button><button class="primary">Create project</button></div></form></dialog>
+<script src="/socket.io/socket.io.js"></script><script src="app.js"></script></body></html>
